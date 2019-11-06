@@ -1,0 +1,15 @@
+@startuml
+Overnight_Charges -> OPS_Topic : pull messages
+OPS -> OPS_Topic: post Open Positions
+Overnight_Charges -> Overnight_Charges_DB : Put messages in DB
+
+Overnight_Charges -> Price_Topic : pull messages
+Pricing -> Price_Topic: post Prices
+
+Overnight_Charges -> AMS_Topic : pull messages
+AMS -> AMS_Topic: post Account Details
+
+Overnight_Charges -> IMS_Topic : pull messages
+IMS -> IMS_Topic: post LIBOR Rates
+
+@enduml

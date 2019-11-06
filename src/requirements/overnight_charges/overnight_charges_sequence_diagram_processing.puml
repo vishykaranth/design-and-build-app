@@ -1,0 +1,7 @@
+@startuml
+Overnight_Charges <- Overnight_Charges_DB : Get OPS Data
+Overnight_Charges <- Overnight_Charges_DB : Get Price Data
+Overnight_Charges <- Overnight_Charges : Calculate Overnight Charges (Position * Price)
+Overnight_Charges -> Ledger : Post Overnight Charges
+
+@enduml

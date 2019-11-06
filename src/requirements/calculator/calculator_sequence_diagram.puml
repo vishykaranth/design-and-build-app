@@ -1,0 +1,4 @@
+@startuml
+Client -> Calculator: add(a, b)
+Calculator -> Client: c
+@enduml
