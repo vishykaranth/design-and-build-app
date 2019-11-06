@@ -6,6 +6,8 @@ public class PositionFactory {
             return new IndicesPosition(size, instrument, state);
         }else if(instrument.equalsIgnoreCase("EQUITY")){
             return new EquityPosition(size, instrument, state);
+        }else if(instrument.equalsIgnoreCase("FX")){
+            return new FXPosition(size, instrument, state);
         }
         throw new InvalidInstrument("Invalid instrument :: " + instrument);
     }

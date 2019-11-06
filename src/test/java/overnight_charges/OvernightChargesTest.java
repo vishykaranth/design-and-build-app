@@ -19,13 +19,13 @@ public class OvernightChargesTest {
     }
 
     @Test
-    public void testOvernightChargesProcessing() throws Exception {
+    public void testOvernightChargesProcessingForEquity() throws Exception {
         Position position = PositionFactory.createPosition(10, "EQUITY", "OPEN");
         Price price = new PriceImpl(5.0);
 
         OvernightCharges overnightCharges = overnightChargesTestUtil.populateOvernightCharges(position, price);
         double charge = overnightCharges.getCharges();
-        assertThat(charge, is(40.0));
+        assertThat(charge, is(10.0));
     }
 
     @Test
@@ -35,11 +35,32 @@ public class OvernightChargesTest {
 
         OvernightCharges overnightCharges = overnightChargesTestUtil.populateOvernightCharges(position, price);
         double charge = overnightCharges.getCharges();
-        assertThat(charge, is(30.0));
+        assertThat(charge, is(4.5));
+    }
+
+    @Test
+    public void testOvernightChargesForFX() throws Exception {
+        Position position = PositionFactory.createPosition(10, "FX", "OPEN");
+        Price price = new PriceImpl(5.0);
+
+        OvernightCharges overnightCharges = overnightChargesTestUtil.populateOvernightCharges(position, price);
+        double charge = overnightCharges.getCharges();
+        assertThat(charge, is(3.8));
     }
 
     @Test(expected = InvalidInstrument.class)
     public void testOvernightChargesInvalidInstrument() throws InvalidInstrument {
         PositionFactory.createPosition(10, "DUMMY", "OPEN");
+    }
+
+
+    @Test
+    public void testOvernightChargesForEquitiesWithCOC() throws Exception {
+        Position position = PositionFactory.createPosition(10, "EQUITY", "OPEN");
+        Price price = new PriceImpl(5.0);
+
+        OvernightCharges overnightCharges = overnightChargesTestUtil.populateOvernightChargesWithCOC(position, price);
+        double charge = overnightCharges.getCharges();
+        assertThat(charge, is(8.5));
     }
 }
