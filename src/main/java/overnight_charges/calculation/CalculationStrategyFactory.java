@@ -1,9 +1,5 @@
-package overnight_charges;
+package overnight_charges.calculation;
 
-import overnight_charges.calculation.CalculationStrategy;
-import overnight_charges.calculation.EquityCalculationStrategy;
-import overnight_charges.calculation.FXCalculationStrategy;
-import overnight_charges.calculation.IndicesCalculationStrategy;
 import overnight_charges.position.InvalidInstrument;
 
 public class CalculationStrategyFactory {

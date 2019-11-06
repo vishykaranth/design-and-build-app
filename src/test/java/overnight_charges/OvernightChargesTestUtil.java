@@ -2,6 +2,7 @@ package overnight_charges;
 
 import overnight_charges.calculation.COCCalculationDecorator;
 import overnight_charges.calculation.CalculationStrategy;
+import overnight_charges.calculation.CalculationStrategyFactory;
 import overnight_charges.position.InvalidInstrument;
 import overnight_charges.position.Position;
 import overnight_charges.price.Price;
