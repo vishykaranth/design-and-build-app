@@ -4,8 +4,6 @@ import overnight_charges.calculation.CalculationStrategy;
 import overnight_charges.position.Position;
 import overnight_charges.price.Price;
 
-import java.math.BigDecimal;
-
 public class OvernightCharges {
     private Position position;
     private Price price;
