@@ -58,7 +58,7 @@ As you know, we have two options which are SQL and NoSQL to select best database
 
  
 
-  User
+  small_apps.User
   UserID
   UserName
   RegisterionDate

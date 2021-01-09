@@ -60,7 +60,7 @@
 
 ### DATABASE SCHEMA
 - As you know, we have talked about the pictures and users basically. We have to decide whether to use SQL or NoSQL before defining database tables. We can use RDBMS to keep data but as you know, scale process of a traditional database system is hard when we decide to keep data o a traditional database system. On the other hand, if we use NoSQL, we can scale system easily. There are three tables to store data;
-- User
+- small_apps.User
     – UserID : Int
     – UserName : Nvarchar
     – UserRealName : Nvarchar

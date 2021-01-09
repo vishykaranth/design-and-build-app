@@ -1,9 +1,9 @@
 @startuml
 
-Client -up-> (addition)
+Client -right-> (addition)
 Client -right-> (substraction)
-Client -left-> (multiplication)
-Client -down-> (divide)
+Client -right-> (multiplication)
+Client -right-> (divide)
 
 'note right of (addition)
 'Add two numbers

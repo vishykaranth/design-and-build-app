@@ -1,5 +1,5 @@
 ## Grokking 
-- Design a Library Management System
+- Design a small_apps.Library Management System
 - Preview
 - Design a Parking Lot
 - Preview

@@ -1,3 +1,5 @@
+package small_apps;
+
 import java.util.HashMap;
 
 /*
@@ -62,7 +64,7 @@ public class OnlineReaderSystem {
  */
 
 /*
- * This class represents the Library which is responsible
+ * This class represents the small_apps.Library which is responsible
  * for storing and searching the books.
  */
 class Library {
@@ -114,7 +116,7 @@ class Library {
 }
 
 /*
- * This class represents the UserManager which is responsible
+ * This class represents the small_apps.UserManager which is responsible
  * for managing the users, their membership etc.
  */
 
@@ -166,7 +168,7 @@ class UserManager {
 }
 
 /*
- * This class represents the Display, which is responsible
+ * This class represents the small_apps.Display, which is responsible
  * for displaying the book, it's pages and contents. It also
  * shows the current user. * It provides the method
  * turnPageForward, turnPageBackward, refreshPage etc.
@@ -214,7 +216,7 @@ class Display {
     public void refreshUsername()
     {
         /* updates username display */
-        System.out.println("User name " + activeUser.getName() +
+        System.out.println("small_apps.User name " + activeUser.getName() +
                 " is refreshed");
     }
 
@@ -240,9 +242,9 @@ class Display {
 }
 
 /*
- * The classes for User and Book simply hold data and
+ * The classes for small_apps.User and small_apps.Book simply hold data and
  * provide little functionality.
- * This class represents the Book which is a simple POJO
+ * This class represents the small_apps.Book which is a simple POJO
  */
 
 class Book {
@@ -289,7 +291,7 @@ class Book {
 }
 
 /*
- * This class represents the User which is a simple POJO
+ * This class represents the small_apps.User which is a simple POJO
  */
 
 class User {
