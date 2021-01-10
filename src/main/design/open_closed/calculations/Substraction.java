@@ -11,8 +11,6 @@ public class Substraction implements Operation
         this.secondOperand = secondOperand;
     }
 
-    //Setters and getters
-
     @Override
     public void performOperation() {
         result = firstOperand - secondOperand;

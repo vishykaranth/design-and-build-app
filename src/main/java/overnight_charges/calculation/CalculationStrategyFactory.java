@@ -14,6 +14,10 @@ public class CalculationStrategyFactory {
         if(instrument.equalsIgnoreCase("FX")){
             return new FXCalculationStrategy();
         }
+        if(instrument.equalsIgnoreCase("COMMODITY")){
+            return new COMMODITYCalculationStrategy();
+        }
+
         throw new InvalidInstrument("Invalid Instrument : " + instrument);
     }
 }

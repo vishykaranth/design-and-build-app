@@ -48,6 +48,16 @@ public class OvernightChargesTest {
         assertThat(charge, is(3.8));
     }
 
+    @Test
+    public void testOvernightChargesForCommodity() throws Exception {
+        Position position = PositionFactory.createPosition(10, "COMMODITY", "OPEN");
+        Price price = new PriceImpl(5.0);
+
+        OvernightCharges overnightCharges = overnightChargesTestUtil.populateOvernightCharges(position, price);
+        double charge = overnightCharges.getCharges();
+        assertThat(charge, is(5.3));
+    }
+
     @Test(expected = InvalidInstrument.class)
     public void testOvernightChargesInvalidInstrument() throws InvalidInstrument {
         PositionFactory.createPosition(10, "DUMMY", "OPEN");

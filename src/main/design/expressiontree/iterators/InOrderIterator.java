@@ -13,17 +13,17 @@ import static expressiontree.nodes.ComponentNode.mTopOfStackPrecedence;
  * Iterates through a {@code Tree} using in-order traversal.  Plays
  * the role of the "ConcreteStrategy" in the Strategy pattern that
  * defines the in-order iteration algorithm.
- * 
+ * <p>
  * This implementation also correctly adds left ('(') and right (')')
  * parentheses to the in-order traversal so that it obeys the proper
  * precedence rules of the expression tree.
  */
-public class InOrderIterator 
-       implements Iterator<ExpressionTree> {
-    /** 
-     * Stack of trees. 
+public class InOrderIterator
+        implements Iterator<ExpressionTree> {
+    /**
+     * Stack of trees.
      */
-    private Stack<ExpressionTree> mNodeStack= new Stack<>();
+    private Stack<ExpressionTree> mNodeStack = new Stack<>();
 
     /**
      * Stack of getLeftChild ('(') and getRightChild (')') parens.
@@ -42,22 +42,22 @@ public class InOrderIterator
      * An ExpressionTree node that prints a left ('(') paren.
      */
     private final static ExpressionTree mLParen =
-        new ExpressionTree(new ParenNode('('));
+            new ExpressionTree(new ParenNode('('));
 
     /**
      * An ExpressionTree node that prints a left (')') paren.
      */
     private final static ExpressionTree mRParen =
-        new ExpressionTree(new ParenNode(')'));
+            new ExpressionTree(new ParenNode(')'));
 
-    /** 
+    /**
      * Constructor initializes the iterator.
      */
     InOrderIterator(ExpressionTree tree) {
-        if(!tree.isNull()) {
+        if (!tree.isNull()) {
             // Push the root of the tree on the stack.
             mNodeStack.push(tree);
-		
+
             // Keep pushing until we get to the left most child.
             while (!mNodeStack.peek().getLeftChild().isNull()) {
                 // Get the current root of the tree.
@@ -65,24 +65,23 @@ public class InOrderIterator
 
                 // Check for (and then handle) the case where the left
                 // child has a lower precendence than the root node.
-                checkAndHandleLowerPrecedenceChild(root,
-                                                   root.getLeftChild());
+                checkAndHandleLowerPrecedenceChild(root, root.getLeftChild());
 
                 // Push the getLeftChild node onto the stack.
                 mNodeStack.push(root.getLeftChild());
             }
         }
     }
-	
-    /** 
-     * Moves iterator to the next expression tree in the stack. 
+
+    /**
+     * Moves iterator to the next expression tree in the stack.
      */
     public ExpressionTree next() {
         // If the "lparen" stack is not empty then pop the lparen node
         // off it and return it as the next node in the tree.
         if (!mParenStack.empty()) {
             return mParenStack.pop();
-        } 
+        }
         // If the node stack is empty but the "last node" stack is not
         // then pop that getItem from that stack and return the rparen
         // node.
@@ -96,7 +95,7 @@ public class InOrderIterator
             // If the "last node" stack's not empty and its top item
             // == result then pop the stack and return rparen node.
             if (!mLastNodeStack.empty()
-                && result.getRoot() == mLastNodeStack.peek().getRoot()) {
+                    && result.getRoot() == mLastNodeStack.peek().getRoot()) {
                 // Push an rparen (')') onto the paren stack.
                 mParenStack.push(mRParen);
 
@@ -116,7 +115,7 @@ public class InOrderIterator
                     // right child has a lower precendence than the
                     // root node.
                     checkAndHandleLowerPrecedenceChild(result,
-                                                       mNodeStack.peek().getRightChild());
+                            mNodeStack.peek().getRightChild());
 
                     // Push the right child node onto the stack and
                     // pop the old parent (it's been visited now).
@@ -132,7 +131,7 @@ public class InOrderIterator
                         // the left child has a lower precendence than
                         // the root node.
                         checkAndHandleLowerPrecedenceChild(root,
-                                                           root.getLeftChild());
+                                root.getLeftChild());
 
                         // Push the left node onto the stack.
                         mNodeStack.push(root.getLeftChild());
@@ -147,19 +146,19 @@ public class InOrderIterator
             return result;
         }
     }
-	
-    /** 
+
+    /**
      * @return True if there are remaining items to iterate over, else false.
      */
     public boolean hasNext() {
         // There's more to do if any of the stacks aren't empty.
         return !mNodeStack.empty()
-            || !mLastNodeStack.empty() 
-            || !mParenStack.empty();
+                || !mLastNodeStack.empty()
+                || !mParenStack.empty();
     }
 
-    /** 
-     * Removes an expression tree from the top of the stack. 
+    /**
+     * Removes an expression tree from the top of the stack.
      */
     public void remove() {
         mNodeStack.pop();
@@ -169,7 +168,8 @@ public class InOrderIterator
      * Checks for the case where a subtree {@code root} has higher precedence than
      * its child, in which case it's necessary to add the appropriate items to the
      * paren stack and the last node stack.
-     * @param root The root of the subtree.
+     *
+     * @param root  The root of the subtree.
      * @param child The child (either left or right) of the subtree.
      */
     private void checkAndHandleLowerPrecedenceChild(ExpressionTree root,
@@ -177,7 +177,7 @@ public class InOrderIterator
         // See if the root of the tree has high precedence than the
         // right child.
         if (mTopOfStackPrecedence[root.getRoot().getType()]
-            > mCurrentTokenPrecedence[child.getRoot().getType()]) {
+                > mCurrentTokenPrecedence[child.getRoot().getType()]) {
             // The child is the root of a tree that must be
             // parenthesized, so push a '(' onto the "lparen" stack.
             mParenStack.push(mLParen);
@@ -188,6 +188,6 @@ public class InOrderIterator
 
             // Push last node onto the "last node" stack.
             mLastNodeStack.push(child);
-        } 
+        }
     }
 }
